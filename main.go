@@ -25,7 +25,7 @@ func main() {
 	}
 
 	if len(os.Args) < 2 {
-		fmt.Println("Expected 'search' or 'list' subcommands")
+		fmt.Println("Expected 'search' or 'list'")
 		os.Exit(1)
 	}
 	//fmt.Println(os.Args)
@@ -37,10 +37,11 @@ func main() {
 		if len(os.Args) > 2 {
 			helper.Search(srch, bookSlice)
 		} else {
-			fmt.Println("Expected argument for 'search'")
+			fmt.Println("Expected search argument for command 'search'")
+			os.Exit(1)
 		}
 	default:
-		fmt.Println("Expected 'list' or 'serach' subcommands")
+		fmt.Println("Expected 'list' or 'serach'")
 		os.Exit(1)
 	}
 
