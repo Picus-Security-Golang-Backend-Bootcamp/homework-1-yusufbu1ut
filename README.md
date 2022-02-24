@@ -2,7 +2,7 @@
 Bu çalışmada os, fmt, strings, bufio(dosyadan veri okumak için kullanılan paket)  ve benim oluşturmuş olduğum helper paketleri ile uygulama gerçekleştirilmiştir.
 
 ## Helper Pakedi
----
+
 Bu paket iki adet fonksiyon içermektedir. 
 
 Bunlar;
@@ -15,11 +15,8 @@ Bunlar;
     Bu fonksiyon içerisinde aranacak argumanı string olarak ve içerisinde aranacak kitaplığı slice olarak alır. String değeri ve slice değerleri küçük,büyük harf yapısına çevrilerek karşılaştırmalar yapılır. Benzerlik içeren veriler çıktılanmaktadır.
 
 ## main.go
----
+
 Burada kitapları.txt dosyası okunarak kitap verileri alınır ve bir slice yapısı içerisine append işlemleri gerçekleştirilir, hata kontrolleri yapılır. 
 
 Konsol üzerinden gelen argüman sayıları incelenir, ilk argüman incelenir ve argüman doğrultusunda helper üzerinden işlemler gerçekleştirilir. 
 
-#� �h�o�m�e�w�o�r�k�-�1�-�y�u�s�u�f�b�u�1�u�t�
-�
-�
