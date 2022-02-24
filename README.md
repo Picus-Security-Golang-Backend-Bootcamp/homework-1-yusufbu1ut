@@ -3,7 +3,7 @@ Bu çalışmada os, fmt, strings, bufio(dosyadan veri okumak için kullanılan p
 
 ## Helper Pakedi
 
-Bu paket iki adet fonksiyon içermektedir. 
+Bu paket funcs.go altında iki adet fonksiyon içermektedir. 
 
 Bunlar;
 
