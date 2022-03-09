@@ -9,40 +9,48 @@ import (
 	"github.com/yusufbu1ut/KitaplikApp/helper"
 )
 
-func main() {
+var BookSlice []string
 
-	file, err := os.OpenFile("kitaplar.txt", os.O_RDONLY, 0755) //Dosya okunmak üzere açılır
-	if err != nil {                                             //dizindeki dosyanın bulunamaması durumunda panic hata çıktısı verilir
+func init() {
+	//Dosya okunmak üzere açılır
+	//dizindeki dosyanın bulunamaması durumunda panic hata çıktısı verilir
+	file, err := os.OpenFile("kitaplar.txt", os.O_RDONLY, 0755)
+	if err != nil {
 		panic(err)
 	}
 	scanner := bufio.NewScanner(file)
 	defer file.Close()
 
-	var bookSlice []string
-	for scanner.Scan() { //burada gerçekleştirilen okuma değerleri slice içerisine aktarılır
+	for scanner.Scan() {
+		//burada gerçekleştirilen okuma değerleri slice içerisine aktarılır
+		//kitaplar slice içerisine yerleştirilir burada girdi sayısının belirsiz olduğu var sayılmıştır
 		line := scanner.Text()
-		bookSlice = append(bookSlice, line) //kitaplar slice içerisine yerleştirilir burada girdi sayısının belirsiz olduğu var sayılmıştır
+		BookSlice = append(BookSlice, line)
 	}
+}
+
+func main() {
 
 	if len(os.Args) < 2 {
 		fmt.Println("Expected 'search' or 'list'")
-		os.Exit(1)
 	}
 	//fmt.Println(os.Args)
 	switch os.Args[1] {
 	case "list":
-		helper.List(bookSlice)
+		if len(os.Args) >= 3 && os.Args[2] != "" {
+			fmt.Println("Command 'list' doesnt take any arg")
+		} else {
+			helper.List(BookSlice)
+		}
 	case "search":
 		srch := strings.Join(os.Args[2:], " ") //Search argumanları birleştirilir
 		if len(os.Args) > 2 {
-			helper.Search(srch, bookSlice)
+			helper.Search(srch, BookSlice)
 		} else {
 			fmt.Println("Expected search argument for command 'search'")
-			os.Exit(1)
 		}
 	default:
 		fmt.Println("Expected 'list' or 'serach'")
-		os.Exit(1)
 	}
 
 	println("")
